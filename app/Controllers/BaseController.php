@@ -9,6 +9,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
+
 /**
  * Class BaseController
  *
@@ -50,5 +51,24 @@ abstract class BaseController extends Controller
         // E.g.: $this->session = \Config\Services::session();
 
         $this->db = \Config\Database::connect();
+
+        session();
+
+        $this->username = session()->get('username');
+        $this->email = session()->get('email');
+        $this->user_id = session()->get('user_id');
+        $this->password = session()->get('password');
+        $this->gambar = session()->get('gambar');
+    }
+
+    protected function createRespon($status, $message, $data = [])
+    {
+        $body = [
+            'status' => $status,
+            'message' => $message,
+            'data' => $data
+        ];
+        $this->response->setStatusCode($status)->setContentType('application/json')->setJSON($body)->send();
+        exit;
     }
 }

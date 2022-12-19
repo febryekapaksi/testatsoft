@@ -12,7 +12,7 @@ foreach ($data as $key => $value) {
     $menu .= "
     <li class='nav-item'>
         <a class='nav-link' href='{$value['url']}'>
-            <i class='bi bi-grid'></i>
+            <i class='{$value['icon']}'></i>
             <span>{$value['menu_label']}</span>
         </a>
     </li>

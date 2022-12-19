@@ -35,19 +35,32 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Home::index',  ['filter' => 'auth']);
 
-$routes->add('user/get', 'User::index');
-$routes->add('user/add', 'User::add');
-$routes->add('user/save', 'User::save');
+$routes->add('auth', 'Auth::index');
+$routes->add('auth/login', 'Auth::login');
+$routes->add('auth/logout', 'Auth::logout');
 
-$routes->add('kategori/get', 'Kategori::index');
-$routes->add('kategori/add', 'Kategori::add');
-$routes->add('kategori/save', 'Kategori::save');
+$routes->add('user/get', 'User::index',  ['filter' => 'auth']);
+$routes->add('user/save', 'User::save',  ['filter' => 'auth']);
+$routes->add('user/detail', 'User::detail',  ['filter' => 'auth']);
+$routes->add('user/edit', 'User::edit',  ['filter' => 'auth']);
+$routes->add('user/delete', 'User::delete',  ['filter' => 'auth']);
 
-$routes->add('berita/get', 'Berita::index');
-$routes->add('berita/add', 'Berita::add');
-$routes->add('berita/save', 'Berita::save');
+$routes->add('kategori/get', 'Kategori::index',  ['filter' => 'auth']);
+$routes->add('kategori/add', 'Kategori::add',  ['filter' => 'auth']);
+$routes->add('kategori/save', 'Kategori::save',  ['filter' => 'auth']);
+$routes->add('kategori/detail', 'Kategori::detail',  ['filter' => 'auth']);
+$routes->add('kategori/edit', 'Kategori::edit',  ['filter' => 'auth']);
+$routes->add('kategori/delete', 'Kategori::delete',  ['filter' => 'auth']);
+
+$routes->add('berita/get', 'Berita::index',  ['filter' => 'auth']);
+$routes->add('berita/add', 'Berita::add',  ['filter' => 'auth']);
+$routes->add('berita/save', 'Berita::save',  ['filter' => 'auth']);
+$routes->add('berita/kategori', 'Berita::kategori',  ['filter' => 'auth']);
+$routes->add('berita/detail', 'Berita::detail',  ['filter' => 'auth']);
+$routes->add('berita/edit', 'Berita::edit',  ['filter' => 'auth']);
+$routes->add('berita/delete', 'Berita::delete',  ['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------
